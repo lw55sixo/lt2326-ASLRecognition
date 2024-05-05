@@ -41,7 +41,9 @@ to generate text file missing.txt containing missing video IDs.
 Training and Testing
 ---------------
 The training and testing was done two times. Firstly, the training and testing was done in exactly the same way as done by Li et al. following the forked repository. Secondly, the labels were changed and the training and testing was done on the resulting data. Please find descriptions of the procedures below.
+
 **First**
+
 
 ```
 cd WLASL
@@ -66,6 +68,7 @@ By default the script tests WLASL2000. To test other subsets, please change line
 A previous release can be found [here](https://drive.google.com/file/d/1vktQxvRHNS9psOQVKx5-dsERlmiYFRXC/view).
 
 **Second**
+
 To train the models, use the following script.
 ```
 python train_i3d_alt.py
