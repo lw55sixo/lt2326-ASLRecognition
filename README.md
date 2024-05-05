@@ -71,7 +71,7 @@ A previous release can be found [here](https://drive.google.com/file/d/1vktQxvRH
 
 To improve the data, use the script
 ```
-python label_manipultion.py
+python label_manipulation.py
 ```
 and then
 ```
