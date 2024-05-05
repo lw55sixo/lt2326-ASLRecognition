@@ -69,6 +69,15 @@ A previous release can be found [here](https://drive.google.com/file/d/1vktQxvRH
 
 **Second**
 
+To improve the data, use the script
+```
+python label_manipultion.py
+```
+and then
+```
+python size_check.py
+```
+
 To train the models, use the following script.
 ```
 python train_i3d_alt.py
