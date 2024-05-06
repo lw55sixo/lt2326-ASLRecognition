@@ -63,7 +63,7 @@ To test pre-trained models, first download [WLASL pre-trained weights](https://d
 ```
 python test_i3d.py
 ```
-By default the script tests WLASL2000. To test other subsets, please change line 264, 270 in ```test_i3d.py``` properly.
+By default the script tests WLASL100. To test other subsets, please change line 264, 270 in ```test_i3d.py``` properly.
 
 A previous release can be found [here](https://drive.google.com/file/d/1vktQxvRHNS9psOQVKx5-dsERlmiYFRXC/view).
 
@@ -86,3 +86,4 @@ To test the pre-trained models, use the following sript.
 ```
 python test_i3d_alt.py
 ```
+By default the script tests WLASL122. To test other subsets, please change line 264, 270 in ```test_i3d_alt.py``` properly. The tested files of my results were added to folder `I3D/archived/asl122/`.
