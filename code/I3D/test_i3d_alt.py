@@ -274,7 +274,7 @@ if __name__ == '__main__':
     mode = 'rgb'
     num_classes = 122
     
-    save_model = './checkpoints100-2/'
+    save_model = './checkpoints122/'
 
     root = '../../WLASL2000'
 

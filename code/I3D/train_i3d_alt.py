@@ -196,7 +196,7 @@ if __name__ == '__main__':
     train_split = 'preprocess/nslt_100_alt_final.json'
 
     # weights = 'archived/asl2000/FINAL_nslt_2000_iters=5104_top1=32.48_top5=57.31_top10=66.31.pt'
-    weights = None#'checkpoints100/nslt_100_002970_0.705426.pt' #None
+    weights = None
     config_file = 'configfiles/asl100.ini'
 
     configs = Config(config_file)
