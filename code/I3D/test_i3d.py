@@ -15,10 +15,10 @@ import numpy as np
 import torch.nn.functional as F
 from pytorch_i3d import InceptionI3d
 
-# from nslt_dataset_all import NSLT as Dataset
 from datasets.nslt_dataset_all import NSLT as Dataset
 import cv2
 
+from sklearn.metrics import accuracy_score
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'
@@ -32,7 +32,6 @@ args = parser.parse_args()
 
 def load_rgb_frames_from_video(video_path, start=0, num=-1):
     vidcap = cv2.VideoCapture(video_path)
-    # vidcap = cv2.VideoCapture('/home/dxli/Desktop/dm_256.mp4')
 
     frames = []
 
@@ -81,7 +80,7 @@ def run(init_lr=0.1,
         i3d = InceptionI3d(400, in_channels=3)
         i3d.load_state_dict(torch.load('weights/rgb_imagenet.pt'))
     i3d.replace_logits(num_classes)
-    i3d.load_state_dict(torch.load(weights))  # nslt_2000_000700.pt nslt_1000_010800 nslt_300_005100.pt(best_results)  nslt_300_005500.pt(results_reported) nslt_2000_011400
+    i3d.load_state_dict(torch.load(weights))
     i3d.cuda()
     i3d = nn.DataParallel(i3d)
     i3d.eval()
@@ -90,14 +89,14 @@ def run(init_lr=0.1,
     correct_5 = 0
     correct_10 = 0
 
-    top1_fp = np.zeros(num_classes, dtype=np.int)
-    top1_tp = np.zeros(num_classes, dtype=np.int)
+    top1_fp = np.zeros(num_classes, dtype=np.intc)
+    top1_tp = np.zeros(num_classes, dtype=np.intc)
 
-    top5_fp = np.zeros(num_classes, dtype=np.int)
-    top5_tp = np.zeros(num_classes, dtype=np.int)
+    top5_fp = np.zeros(num_classes, dtype=np.intc)
+    top5_tp = np.zeros(num_classes, dtype=np.intc)
 
-    top10_fp = np.zeros(num_classes, dtype=np.int)
-    top10_tp = np.zeros(num_classes, dtype=np.int)
+    top10_fp = np.zeros(num_classes, dtype=np.intc)
+    top10_tp = np.zeros(num_classes, dtype=np.intc)
 
     for data in dataloaders["test"]:
         inputs, labels, video_id = data  # inputs: b, c, t, h, w
@@ -154,7 +153,7 @@ def ensemble(mode, root, train_split, weights, num_classes):
         i3d = InceptionI3d(400, in_channels=3)
         i3d.load_state_dict(torch.load('weights/rgb_imagenet.pt'))
     i3d.replace_logits(num_classes)
-    i3d.load_state_dict(torch.load(weights))  # nslt_2000_000700.pt nslt_1000_010800 nslt_300_005100.pt(best_results)  nslt_300_005500.pt(results_reported) nslt_2000_011400
+    i3d.load_state_dict(torch.load(weights))
     i3d.cuda()
     i3d = nn.DataParallel(i3d)
     i3d.eval()
@@ -261,8 +260,8 @@ if __name__ == '__main__':
     # ================== test i3d on a dataset ==============
     # need to add argparse
     mode = 'rgb'
-    num_classes = 2000
-    save_model = './checkpoints/'
+    num_classes = 100
+    save_model = './checkpoints100/'
 
     root = '../../data/WLASL2000'
 
