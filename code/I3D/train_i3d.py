@@ -16,7 +16,6 @@ import numpy as np
 from configs import Config
 from pytorch_i3d import InceptionI3d
 
-# from datasets.nslt_dataset import NSLT as Dataset
 from datasets.nslt_dataset import NSLT as Dataset
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -192,12 +191,12 @@ if __name__ == '__main__':
     mode = 'rgb'
     root = {'word': '../../data/WLASL2000'}
 
-    save_model = 'checkpoints/'
-    train_split = 'preprocess/nslt_2000.json'
+    save_model = 'checkpoints100/'
+    train_split = 'preprocess/nslt_100.json'
 
     # weights = 'archived/asl2000/FINAL_nslt_2000_iters=5104_top1=32.48_top5=57.31_top10=66.31.pt'
     weights = None
-    config_file = 'configfiles/asl2000.ini'
+    config_file = 'configfiles/asl100.ini'
 
     configs = Config(config_file)
     print(root, train_split)

@@ -279,6 +279,6 @@ if __name__ == '__main__':
     root = '../../WLASL2000'
 
     train_split = 'preprocess/nslt_100_alt_final.json'
-    weights = './checkpoints100-2/nslt_122_052681_0.623656.pt' #'./checkpoints100-2/nslt_122_055600_0.602151.pt'
+    weights = 'archived/asl122/nslt_122_052681_0.623656.pt'
 
     run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights)

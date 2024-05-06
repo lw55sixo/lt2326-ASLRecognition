@@ -266,6 +266,6 @@ if __name__ == '__main__':
     root = '../../data/WLASL2000'
 
     train_split = 'preprocess/nslt_{}.json'.format(num_classes)
-    weights = 'archived/asl2000/FINAL_nslt_2000_iters=5104_top1=32.48_top5=57.31_top10=66.31.pt'
+    weights = 'archived/asl100/nslt_100_052569_0.732558.pt'
 
     run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights)
